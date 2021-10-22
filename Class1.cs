@@ -35,7 +35,7 @@ namespace kordamine_Valkrusman
             {
                 kohad = 30;read = 20;
             }
-            saal=new int 
+            saal = new int 
             for (int rida = 0; rida < read; rida++)
             {
                 for (int koht = 0; koht < kohad; koht++)
@@ -47,32 +47,43 @@ namespace kordamine_Valkrusman
         }
         static void Saal_ekraanile()
         {
-            for (int rida = 0; rida < read; rida++)
+            Console.Write("     ");
+            for (int koht = 0; koht < kohad; koht++)
             {
-                for (int koht = 0; koht < kohad; rida++)
-                {
-                    Console.Write(saal[rida, koht]);
+                if (koht.ToString().Lenght == 2)
+                { Console.Write("{0}", koht + 1); }
+                else
+                { Console.WriteLine("{0}", koht + 1); }
 
-                }
-                Console.WriteLine();
-              
             }
-
+            Console.WriteLine();
+            for(int rida=0;rida<read;rida++)
+            {
+                Console.Write("rida" + (rida + 1).ToString() + ":");
+                for (int koht=0; koht<kohad;koht++
+  
+            }
         }
 
         static bool Muuk()
         {
             Console.Write("Rida: ");
             int pileti_rida = int.Parse(Console.ReadLine());
-            Console.WriteLine("Koht:");
-            int pileti_koht = int.Parse(Console.ReadLine());
-            if (saal[pileti_rida-1,pileti_koht-1]==0)
+
+            Console.WriteLine("mitu piletid:");
+            mitu= int.Parse(Console.ReadLine());
+            int[] ost = new int[] { };
+            int p = kohad / 2;
+       
+
+            if (saal[pileti_rida,p]==0)
             {
-                saal[pileti_rida - 1, pileti_koht - 1] = 1;
+                Console.WriteLine("koht{0} on vaba", p);
                 return true;
             }
             else
             {
+                Console.WriteLine("koht{0} on kinni", p);
                 return false;
             }
         }
