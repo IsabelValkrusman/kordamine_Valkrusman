@@ -14,18 +14,18 @@ namespace kordamine_Valkrusman
             int suurus = int.Parse(Console.ReadLine());
             return suurus;
         }
-        static int[,] saal = new int[,] { };
-        static int[] ost = new int[] { };
+        static int[,] saal = new int[,] { };//täisarvudest  tekkib matritsa
+        static int[] ost = new int[] { };//teeb massiivi
         static int kohad, read, mitu, mitu_veel;
         static void Saali_taitmine(int suurus)
         {
             Random rnd = new Random();// randoomsed kohad tulevad
             if (suurus == 1)
-            { kohad = 20; read = 10; }// esimese suuruse kohad ja read
+            { kohad = 20; read = 10; }// esimese saali kohad ja read
             else if (suurus == 2)
-            { kohad = 20; read = 20; }//teise suuruse kohad ja read
+            { kohad = 20; read = 20; }//teise saali kohad ja read
             else
-            { kohad = 30; read = 20; }
+            { kohad = 30; read = 20; } // else kolmas saal
             saal = new int[read, kohad];
             for (int rida = 0; rida < read; rida++)
             {
@@ -37,8 +37,8 @@ namespace kordamine_Valkrusman
         }
         static void Saal_ekraanile()
         {
-            Console.Write("     ");
-            for (int koht = 0; koht < kohad; koht++)
+            Console.Write("     ");// kirjutab suur vahe
+            for (int koht = 0; koht < kohad; koht++)// inimene sisestab arvu, ja kui see on väiksem kui 'kohad' siis koht liidab juurde
             {
                 if (koht.ToString().Length == 2)
                 { Console.Write(" {0}", koht + 1); }// see millise koha valib klient, koguaeg hakkab tulema +1
@@ -61,12 +61,12 @@ namespace kordamine_Valkrusman
         static void Muuk_ise()
         {
             Console.WriteLine("Rida:");
-            int pileti_rida = int.Parse(Console.ReadLine());
-            Console.WriteLine("Rida:");
-            int pileti_koht = int.Parse(Console.ReadLine());
-            if (saal[pileti_rida, pileti_koht] == 0)
+            int pileti_rida = int.Parse(Console.ReadLine());// kirjutad valid rea, kus tahad istuda
+            Console.WriteLine("koht:");
+            int pileti_koht = int.Parse(Console.ReadLine()); // valid koha kus tahad istuda
+            if (saal[pileti_rida, pileti_koht] == 0)// alguses on 0 rida ja koht
             {
-                saal[pileti_rida, pileti_koht] = 1;
+                saal[pileti_rida, pileti_koht] = 1;// tuleb koht millise valis klient
             }
 
 
@@ -96,9 +96,9 @@ namespace kordamine_Valkrusman
                     ost = new int[mitu];
                     k = 0;
                     p = (kohad - mitu) / 2;
-                    break;//
+                    break;// lõpetab Muuk
                 }
-                p = p + 1;
+                p = p + 1;// +1 kohale
                 k++;
             } while (mitu != k);
             if (t == true)
@@ -117,7 +117,7 @@ namespace kordamine_Valkrusman
         public static void Main(string[] args)
         {
             int suurus = Saali_suurus();
-            Saali_taitmine(suurus);
+            Saali_taitmine(suurus);// valid saali (1,2,3)
             while (true)
             {
                 Saal_ekraanile();
